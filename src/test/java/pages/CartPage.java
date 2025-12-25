@@ -8,7 +8,7 @@ public class CartPage extends BasePage{
     private final String cartItem = "[data-test='inventory-item']";
     private final String continueCheckout= "[data-test='continue-shopping']";
     private final String checkout= "[data-test='checkout']";
-    private final String removeBtn= "[//button[text()='Remove'])[%d]";
+    private final String removeBtn= "(//button[text()='Remove'])[%d]";
 
     public CartPage(Page page) {
         super(page);

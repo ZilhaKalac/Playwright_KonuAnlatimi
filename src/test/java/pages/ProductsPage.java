@@ -12,7 +12,7 @@ public class ProductsPage extends BasePage {
 
     private final String pageTitle = "[data-test='title']";
     private final String inventoryItem = "[data-test='inventory_item']";
-    private final String addToCart = "(//button[text()='Add to cart'])[%d]"; // String.format() kullanicaz
+    private final String addToCart = "(//button[text()='Add to cart'])[%d]";         // String.format() kullanicaz
     private final String cartItem = "[data-test='shopping-cart-link']";
     private final String cartBadge = "[data-test='shopping-cart-badge']";
     private final String productSortDropDown = "[data-test='product-sort-container']";
@@ -36,13 +36,13 @@ public class ProductsPage extends BasePage {
                                                         // istenen deger yazilir.
 
 
-    public int getCartBadgeCount(){
+    public int getCartBadgeCount() {
 
         if (!isVisible(cartBadge)) {
-            return 0;                                     // Eger cart a ekleme yapilmadiysa deger sifir olur
+            return 0;                                            // Eger cart a ekleme yapilmadiysa deger sifir olur
         }
-        return Integer.parseInt(getText(cartBadge));      // ekleme yapildiysa deger getText ten String geldigi icin integer a dönüstürdük
-
+        String text = page.locator(cartBadge).textContent().trim();
+        return Integer.parseInt(text);             // ekleme yapildiysa deger getText ten String geldigi icin integer a dönüstürdük
     }
 
     public ProductsPage selectSort(String value) {
