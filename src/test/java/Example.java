@@ -4,7 +4,7 @@ import com.microsoft.playwright.options.AriaRole;
 public class Example {
     static void main() {
 
-             // playwright başlatıldı
+                           // playwright başlatıldı
         try (Playwright playwright = Playwright.create()) {
             //Browser başlatılıyor
             Browser browser = playwright.chromium().launch(
@@ -13,24 +13,25 @@ public class Example {
                             .setSlowMo(500)
             );
 
-            // yeni tab oluşturmak, yeni sekme açılması için kullanılır. Zorunlu değildir
+                           // yeni tab oluşturmak, yeni sekme açılması için kullanılır. Zorunlu değildir
             BrowserContext browserContext = browser.newContext();
-            // Page page = browser.newPage();   bu şekilde de kullanılabilir
+                           // Page page = browser.newPage();   bu şekilde de kullanılabilir
             Page page = browserContext.newPage();
 
-            //burada siteyi açtık
+                           //burada siteyi açtık
             page.navigate("https://saucedemo.com/");
             System.out.println(page.title());
             page.pause();   //inspectoru başlatmak için kullandık
 
-            Locator username = page.getByPlaceholder("Username");
+            Locator username = page.getByPlaceholder("Username");           //placeholder ile kullanım şekli, (input alanı içerisinde kullanıcının gördüğü kısım
             username.fill("standard_user");
 
             Locator password = page.getByPlaceholder("Password");
             password.fill("secret_sauce");
 
-            Locator loginBtn =page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login"));
+            Locator loginBtn = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login"));    // Role ile kullanım
             loginBtn.click();
+            page.pause();
 
 
             //burada siteyi kapattık
